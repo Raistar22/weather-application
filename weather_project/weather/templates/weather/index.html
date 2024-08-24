@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <div id="weather-data"></div>
+    <script>
+        fetch('/api/weather/')
+            .then(response => response.json())
+            .then(data => {
+                const weatherDiv = document.getElementById('weather-data');
+                data.forEach(weather => {
+                    weatherDiv.innerHTML += `<p>${weather.city}: ${weather.temperature}°C, ${weather.description}</p>`;
+                });
+            });
+    </script>
+</body>
+</html>
